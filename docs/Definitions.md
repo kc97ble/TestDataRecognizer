@@ -4,11 +4,7 @@
 
 # Definition of the "file list"
 
-- A _worth-considering file_ is a file which is either
-  + directly inside the _given directory_, or
-  + directly inside a direct subdirectory of the _given directory_.
-
-- The _file list_ is the sorted list of relative paths of all _worth-considering files_. Each item in the _file list_ has format `file.ext` or `dir/file.ext` (on Linux) or `dir\file.ext` (on Windows).
+Read `File list.md` for the correct definition of the _file list_, as well as several properties, examples related to the _file list_.
 
 # Definition of a "test case"
 
