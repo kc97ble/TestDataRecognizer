@@ -12,14 +12,16 @@ class Spec:
                                      self.outputSpec, self.specType)
 
     def match_suffix(self, testCase):
-        return testCase.inputFile.endswith(self.inputSpec) \
-               and testCase.outputFile.endswith(self.outputSpec) \
-            # and ...
-
+        A, B = testCase.inputFile, testCase.outputFile
+        X, Y = self.inputSpec, self.outputSpec
+        return A.endswith(X) and B.endswith(Y) and \
+               A[0:len(A)-len(X)] == B[0:len(B)-len(Y)]
+        
     def match_prefix(self, testCase):
-        return testCase.inputFile.startswith(self.inputSpec) \
-               and testCase.outputFile.startswith(self.outputSpec) \
-            # and ...
+        A, B = testCase.inputFile, testCase.outputFile
+        X, Y = self.inputSpec, self.outputSpec
+        return A.startswith(X) and B.startswith(Y) and \
+               A[len(X):] == B[len(Y):]
 
     def match(self, testCase):
         if self.specType == '$':
