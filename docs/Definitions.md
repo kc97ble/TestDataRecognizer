@@ -1,12 +1,16 @@
-# Definition of the "given directory"
+# Definitions
+
+## Definition of the "given directory"
 
 - The _given directory_ is the directory in the input.
 
-# Definition of the "file list"
+## Definition of the "file list"
 
 Read `File list.md` for the correct definition of the _file list_, as well as several properties, examples related to the _file list_.
 
-# Definition of a "test case"
+Basically, the _file list_ is the sorted list of valid _relative paths_ of _worth-considering files_ in the _given directory_. For definitions of _relative paths_, _worth-considering files_, please read `File list.md`.
+
+## Definition of a "test case"
 
 - A _test case_ is a pair of two file names:
   + The first item is called the _input file_ of the _test case_.
@@ -16,37 +20,41 @@ Read `File list.md` for the correct definition of the _file list_, as well as se
   + _input file_ and _output file_ are different, and
   + _input file_ and _output file_ exist in the _file list_.
 
-# Definition and properties of a "spec"
+## Definition and properties of a "spec"
 
 - A _spec_ is a struct of these three properties:
   + _input spec_: a string
   + _output spec_: a string
   + _spec type_: a char, can only be `^` or `$`
 
-- We say a _test case_ T matches a _spec_ S with type `^` iff
+- A _spec_ is considered to be valid iff
+  + _input spec_ and _output spec_ do not contain any uppercase letters, and
+  + _input spec_ and _output spec_ do not contain any of the following restricted characters `< > : " / \ | ? *` (note that space is not a restricted character).
+
+- We say a valid _spec_ S matches a _test case_ T with type `^` iff
   + _spec type_ of S is `^`, and
-  + _input spec_ of S is a prefix of _input file_ of T, case-insensitively, and
-  + _output spec_ of S is a prefix of _output file_ of T, case-insensitively, and
+  + _input spec_ of S is a prefix of _input file_ of T, and
+  + _output spec_ of S is a prefix of _output file_ of T, and
   + `T.inputFile - S.inputSpec == T.outputFile - S.outputSpec`.
   Note that, in the paragraph above, A-B is the string obtained by removing `length(B)` characters from the beginning of A.
 
-- We say a _test case_ T matches a _spec_ S with type `$` iff
+- We say a valid _spec_ S matches a _test case_ T with type `$` iff
   + _spec type_ of S is `$`, and
-  + _input spec_ of S is a suffix of _input file_ of T, case-insensitively, and
-  + _output spec_ of S is a suffix of _output file_ of T, case-insensitively, and
+  + _input spec_ of S is a suffix of _input file_ of T, and
+  + _output spec_ of S is a suffix of _output file_ of T, and
   + `T.inputFile - S.inputSpec == T.outputFile - S.outputSpec`.
   Note that, in the paragraph above, A-B is the string obtained by removing `length(B)` characters from the end of A.
 
-- We say a _test case_ T matches a _spec_ S iff
-  + T matches S with type `^`, or
-  + T matches S with type `$`.
+- We say a valid _spec_ S matches a _test case_ T iff
+  + S matches T with type `^`, or
+  + S matches T with type `$`.
 
-# Definition and properties of a "test list"
+## Definition and properties of a "test list"
 
 - A _test list_ is a list of _test cases_, associated with a _spec_.
 
 - A _test list_ is considered to be valid iff
-  + each _test case_ is a valid, and
+  + each _test case_ is a valid _test case_, and
   + each file name in the _test list_ appears only once, and
   + each _test case_ matches the _spec_ if the _test list_.
 
