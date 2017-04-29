@@ -1,8 +1,7 @@
-from testcase import *
-
-
 class Spec:
     def __init__(self, inputSpec, outputSpec, specType):
+        if specType != '$' and specType != '^':
+            raise AssertionError("specType muse be '$' or '^'")
         self.inputSpec = inputSpec
         self.outputSpec = outputSpec
         self.specType = specType
@@ -15,8 +14,8 @@ class Spec:
         A, B = testCase.inputFile, testCase.outputFile
         X, Y = self.inputSpec, self.outputSpec
         return A.endswith(X) and B.endswith(Y) and \
-               A[0:len(A)-len(X)] == B[0:len(B)-len(Y)]
-        
+               A[0:len(A) - len(X)] == B[0:len(B) - len(Y)]
+
     def match_prefix(self, testCase):
         A, B = testCase.inputFile, testCase.outputFile
         X, Y = self.inputSpec, self.outputSpec
@@ -28,7 +27,6 @@ class Spec:
             return self.match_suffix(testCase)
         if self.specType == '^':
             return self.match_prefix(testCase)
-        raise AssertionError("specType muse be '$' or '^'")
 
     def vowel_score(self):
         s = "aeiou"
@@ -38,10 +36,3 @@ class Spec:
             d2[s[i]] = self.outputSpec.count(s[i])
         return (-d1['a'] - d1['e'] + d1['i'] - d1['o'] - d1['u']) + \
                (d2['a'] + d2['e'] - d2['i'] + d2['o'] + d2['u'])
-
-
-if __name__ == "__main__":
-    print Spec(".in", ".ans", '$')
-    print TestCase("1.in", "1.ans")
-    print Spec(".in", ".ans", '$').match(TestCase("1.in", "1.ans"))
-    print Spec(".in", ".ans", '$').vowel_score()
