@@ -12,7 +12,3 @@ class TestCase:
 
     def __str__(self):
         return "({}, {})".format(self.inputFile, self.outputFile)
-
-
-if __name__ == "__main__":
-    print TestCase("0.in", "0.ans")
