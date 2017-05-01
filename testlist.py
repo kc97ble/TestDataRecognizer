@@ -6,8 +6,8 @@ class TestList:
 
     """
 
-    def __init__(self, testCaseList, spec):
-        self.testCaseList = testCaseList
+    def __init__(self, test_case_list, spec):
+        self.test_case_list = test_case_list
         self.spec = spec
 
 
