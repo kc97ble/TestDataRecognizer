@@ -1,6 +1,3 @@
-from testcase import *
-
-
 class Spec:
     def __init__(self, input_spec, output_spec, spec_type):
         self.input_spec = input_spec
@@ -38,10 +35,3 @@ class Spec:
             d2[s[i]] = self.output_spec.count(s[i])
         return (-d1['a'] - d1['e'] + d1['i'] - d1['o'] - d1['u']) + \
                (d2['a'] + d2['e'] - d2['i'] + d2['o'] + d2['u'])
-
-
-if __name__ == "__main__":
-    print Spec(".in", ".ans", '$')
-    print TestCase("1.in", "1.ans")
-    print Spec(".in", ".ans", '$').match(TestCase("1.in", "1.ans"))
-    print Spec(".in", ".ans", '$').vowel_score()
