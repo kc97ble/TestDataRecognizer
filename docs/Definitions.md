@@ -35,14 +35,14 @@ Basically, the _file list_ is the sorted list of valid _relative paths_ of _wort
   + _spec type_ of S is `^`, and
   + _input spec_ of S is a prefix of _input file_ of T, and
   + _output spec_ of S is a prefix of _output file_ of T, and
-  + `T.inputFile - S.inputSpec == T.outputFile - S.outputSpec`.
+  + `T.input_file - S.input_spec == T.output_file - S.output_spec`.
   Note that, in the paragraph above, A-B is the string obtained by removing `length(B)` characters from the beginning of A.
 
 - We say a valid _spec_ S matches a _test case_ T with type `$` iff
   + _spec type_ of S is `$`, and
   + _input spec_ of S is a suffix of _input file_ of T, and
   + _output spec_ of S is a suffix of _output file_ of T, and
-  + `T.inputFile - S.inputSpec == T.outputFile - S.outputSpec`.
+  + `T.input_file - S.input_spec == T.output_file - S.output_spec`.
   Note that, in the paragraph above, A-B is the string obtained by removing `length(B)` characters from the end of A.
 
 - We say a valid _spec_ S matches a _test case_ T iff
