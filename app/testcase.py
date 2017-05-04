@@ -11,4 +11,4 @@ class TestCase:
         self.output_file = output_file
 
     def __str__(self):
-        return "({}, {})".format(self.inputFile, self.outputFile)
+        return "({}, {})".format(self.input_file, self.output_file)
