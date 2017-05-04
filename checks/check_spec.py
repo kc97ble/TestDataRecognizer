@@ -1,6 +1,7 @@
-import pytest, unittest
-from spec import Spec
-from testcase import TestCase
+import unittest
+
+from app.spec import Spec
+from app.testcase import TestCase
 
 
 class CheckSpec(unittest.TestCase):

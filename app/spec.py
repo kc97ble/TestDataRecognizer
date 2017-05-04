@@ -9,16 +9,16 @@ class Spec:
                                      self.output_spec, self.spec_type)
 
     def match_suffix(self, test_case):
-        A, B = test_case.input_file, test_case.output_file
-        X, Y = self.input_spec, self.output_spec
-        return A.endswith(X) and B.endswith(Y) and \
-               A[0:len(A) - len(X)] == B[0:len(B) - len(Y)]
+        a, b = test_case.input_file, test_case.output_file
+        x, y = self.input_spec, self.output_spec
+        return a.endswith(x) and b.endswith(y) and \
+               a[0:len(a) - len(x)] == b[0:len(b) - len(y)]
 
     def match_prefix(self, test_case):
-        A, B = test_case.input_file, test_case.output_file
-        X, Y = self.input_spec, self.output_spec
-        return A.startswith(X) and B.startswith(Y) and \
-               A[len(X):] == B[len(Y):]
+        a, b = test_case.input_file, test_case.output_file
+        x, y = self.input_spec, self.output_spec
+        return a.startswith(x) and b.startswith(y) and \
+               a[len(x):] == b[len(y):]
 
     def match(self, test_case):
         if self.spec_type == '$':
